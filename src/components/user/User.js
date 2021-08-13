@@ -4,8 +4,6 @@ import Posts from "../posts/Posts";
 
 export default function User ({item, item: {address}, item: {company}}) {
 
-
-
     return (
         <div>
             <h2>{item.id} user : {item.name} {item.username}</h2>
