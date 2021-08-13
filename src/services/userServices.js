@@ -1,11 +1,15 @@
+let  url = 'https://jsonplaceholder.typicode.com/users';
+
 function getUsers() {
-    return fetch('https://jsonplaceholder.typicode.com/users')
+    return fetch(url)
         .then(value => value.json());
 }
 
 function getUser(id) {
-    return fetch('https://jsonplaceholder.typicode.com/users' + id)
+    return fetch(url + id)
         .then(value => value.json());
 }
+
+
 
 export {getUsers, getUser};
