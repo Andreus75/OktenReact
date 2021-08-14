@@ -1,6 +1,5 @@
-export default function Address () {
+export default function Company () {
     return (
-
         <div>
 
         </div>
