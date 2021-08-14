@@ -1,17 +1,20 @@
 import {useEffect, useState} from "react";
-import {getCommentsOfPost} from "../../services/commentService";
+import {getComments} from "../../services/commentService";
+import Comment from "../comment/Comment";
 
-export default function Comments ({item}) {
+export default function Comments () {
 
     let [comments, setComment] = useState([]);
 
     useEffect(() => {
-        getCommentsOfPost().then(value => console.log(value.name))
+        getComments().then(value => setComment([...value]))
     }, []);
 
     return (
         <div>
-
+            {
+                comments.map(value => <Comment key={value.id} comment={value}/>)
+            }
         </div>
     );
 }

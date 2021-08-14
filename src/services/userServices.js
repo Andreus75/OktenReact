@@ -6,10 +6,8 @@ function getUsers() {
 }
 
 function getUser(id) {
-    return fetch(url + id)
+    return fetch(url + '/' + id)
         .then(value => value.json());
 }
-
-
 
 export {getUsers, getUser};
