@@ -13,7 +13,6 @@ export default function Posts ({user}) {
 
     return (
         <div>
-            <h3>Posts : </h3>
             {
                 posts.map(value => <Post post={value} key={value.id}/>)
             }
