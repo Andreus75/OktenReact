@@ -5,3 +5,11 @@
 .wrap > div {
     width: 50%;
 }
+
+.users-box {
+    background: silver;
+}
+
+.chosen-posts {
+    background: bisque;
+}

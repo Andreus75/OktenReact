@@ -1,8 +1,14 @@
-export default function User ({user}) {
+export default function User ({user, choseUser}) {
+
+    const onClickUserChose = () => {
+        choseUser(user);
+    }
+
     return (
         <div>
-            <h3>{user.id} user : {user.name} {user.username}</h3>
-            <button onClick={() => console.log('posts')}>show posts</button>
+            <h3>{user.id} - {user.name}
+            <button onClick={onClickUserChose}>show posts</button>
+            </h3>
         </div>
     );
 }

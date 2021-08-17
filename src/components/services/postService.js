@@ -1,7 +1,7 @@
 let url = 'https://jsonplaceholder.typicode.com/users';
 
-function getPostsOfUser() {
-    return fetch(url)
+function getPostsOfUser(userId) {
+    return fetch(url + '/' + userId + '/posts')
         .then(value => value.json());
 }
 
