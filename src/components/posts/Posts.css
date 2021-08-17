@@ -1,0 +1,13 @@
+.wrap {
+    display: flex;
+}
+
+.wrap > div {
+    width: 50%;
+}
+.posts-box {
+    background: silver;
+}
+.chosen-comments {
+    background: aqua;
+}
