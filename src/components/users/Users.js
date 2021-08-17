@@ -35,7 +35,7 @@ export default function Users () {
                 user && <div className={'chosen-posts'}>
 
                     {
-                       posts.map(value => <Post post={value}/>)
+                       posts.map(value => <Post key={value.id} post={value}/>)
                     }
                 </div>
             }
