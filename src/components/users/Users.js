@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
-import {getUsers} from "../services/userServices";
+import {getUsers} from "../../services/userServices";
 import User from "../user/User";
 import "./Users.css";
-import {getPostsOfUser} from "../services/postService";
+import {getPostsOfUser} from "../../services/postService";
 import Post from "../post/Post";
 
 export default function Users () {
