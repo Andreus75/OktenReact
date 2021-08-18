@@ -1,10 +1,10 @@
 import './App.css';
-import Users from "./components/users/Users";
+import CarForm from "./components/CarForm";
 
 function App() {
   return (
     <div className="App">
-      <Users/>
+        <CarForm/>
     </div>
   );
 }
