@@ -14,7 +14,7 @@ export default function Comments () {
         <div>
             <h3>Comments :</h3>
             {
-                comments.map(value => <Comment key={value.id}/>)
+                comments.map(value => <Comment key={value.id} comment={value}/>)
             }
         </div>
     );

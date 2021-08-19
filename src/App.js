@@ -13,11 +13,13 @@ export default function App() {
   return (
       <Router>
           <div className="App">
-              <ul>
-                  <li><Link to={'/users'}>users-page</Link></li>
-                  <li><Link to={'/posts'}>posts-page</Link></li>
-                  <li><Link to={'comments'}>comments-page</Link></li>
-              </ul>
+              <Switch>
+                  <ul>
+                      <li><Link to={'/users'}>users-page</Link></li>
+                      <li><Link to={'/posts'}>posts-page</Link></li>
+                      <li><Link to={'/comments'}>comments-page</Link></li>
+                  </ul>
+              </Switch>
               <Route path={'/users'}>
                   <h3>Users : </h3>
                   <Users/>
