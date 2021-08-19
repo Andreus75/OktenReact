@@ -28,8 +28,7 @@ export default function CarsForm () {
         setYear(e.target.value);
     }
 
-    let save = (e) => {
-        e.preventDefault();
+    let save = () => {
         let car = {model, price, year};
         saveCar(car);
     }
