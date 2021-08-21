@@ -1,4 +1,4 @@
-let url = 'http://195.72.146.25/api/v1/cars';
+let url = 'http://91.201.233.14/api/v1/cars';
 
 const saveCar = (car) => {
     fetch(url, {

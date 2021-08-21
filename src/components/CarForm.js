@@ -11,8 +11,7 @@ export default function CarForm () {
       setFormState({...formState, [e.target.name]: e.target.value});
     };
 
-    let save = (e) => {
-        e.preventDefault();
+    let save = () => {
         saveCar(formState);
     }
 
@@ -34,7 +33,6 @@ export default function CarForm () {
                 <input type="number" name={'year'} value={formState.year} onInput={onFormCarInputChange} min={1990} max={2021}/>
                 <br/>
                 <input type="submit"/>
-
             </form>
             <div>
                 {
