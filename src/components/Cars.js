@@ -13,11 +13,11 @@ export default function Cars ({url}) {
 
     switch (url) {
         case 'even':
-            return cars.filter(value => value.model.length % 2 === 0).map(value => <div><Car key={value.key}
+            return cars.filter(value => value.model.length % 2 === 0).map(value => <div><Car key={value.id}
                                                                                              car={value}/></div>);
             break;
         case 'odd':
-            return cars.filter(value => value.model.length % 2 !== 0).map(value => <div><Car key={value.key}
+            return cars.filter(value => value.model.length % 2 !== 0).map(value => <div><Car key={value.id}
                                                                                              car={value}/></div>);
             break
         default :
@@ -25,8 +25,13 @@ export default function Cars ({url}) {
     }
 
 
-
-
+    return (
+        <div>
+            {
+                cars.map(value => <Car key={value.id} car={value}/>)
+            }
+        </div>
+    );
 
 
 
