@@ -1,12 +1,17 @@
-export default function Car ({car, deleteCar}) {
+export default function Car ({car, deleteCar, editCar}) {
     let onClickDeleteCar = () => {
         deleteCar(car.id);
     }
+
+    let onClickEditCar = () => {
+        editCar(car);
+    }
+
     return (
-        <div>
+        <div className={''}>
              {car.id}. Model : {car.model}. Price : {car.price}. Year : {car.year}
             <button onClick={onClickDeleteCar}>delete</button>
-            <button>edit</button>
+            <button onClick={onClickEditCar}>edit</button>
         </div>
     );
 }
