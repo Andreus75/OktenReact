@@ -11,7 +11,8 @@ export default function CarForm () {
       setFormState({...formState, [e.target.name]: e.target.value});
     };
 
-    let save = () => {
+    let save = (e) => {
+        e.preventDefault();
         saveCar(formState);
     }
 
