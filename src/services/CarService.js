@@ -1,5 +1,4 @@
-let url = 'http://195.72.144.67/api/v1/cars';
-// 195.72.146.25/
+let url = 'http://91.201.233.14/api/v1/cars';
 
 let getCars = () => {
     return fetch(url)

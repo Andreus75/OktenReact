@@ -22,9 +22,10 @@ export default function CarsForm () {
 
     function onCarYearChange(e) {  setYear(e.target.value); }
 
-    let save = () => {
-            let car = {model, price, year};
-            saveCar(car);
+    let save = (e) => {
+        e.preventDefault();
+        let car = {model, price, year};
+        saveCar(car);
     }
 
     let deleteCar = (id) => {
@@ -33,7 +34,6 @@ export default function CarsForm () {
         setCars([...filterCarsArray]);
     }
 
-    
     let editCar = (car) => {
         setModel(car.model);
         setPrice(car.price);
@@ -52,7 +52,6 @@ export default function CarsForm () {
                 <input type="number" name={'year'} value={year} onChange={onCarYearChange} min={1990} max={2021}/>
                 <br/>
                 <button className={'save_car'} onClick={saveCar}>Save car</button>
-                {/*<button className={'edit_car'} onClick={editCar}>Edit car</button>*/}
             </form>
             {
                 cars.map(value => <Car key={value.id} car={value} deleteCar={deleteCar} editCar={editCar}/>)
