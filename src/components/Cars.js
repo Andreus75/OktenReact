@@ -8,7 +8,7 @@ export default function Cars ({url}) {
 
     useEffect(() => {
         getCars(cars).then(value => setCars(value));
-    })
+    },[])
 
 
     switch (url) {

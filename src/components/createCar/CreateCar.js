@@ -3,7 +3,7 @@ import {createCar} from "../../services/carService";
 
 export default function CreateCar () {
 
-    let [model, setModel] = useState({});
+    let [model, setModel] = useState('');
     let [price, setPrice] = useState({});
     let [year, setYear] = useState({});
 
@@ -33,6 +33,7 @@ export default function CreateCar () {
                 <input type="number" name={'price'} value={price} onInput={onPriceInput}/>
                 <p>Input year</p>
                 <input type="number" name={'year'} value={year} onInput={onYearInput}/>
+                <br/>
                 <button>Create car</button>
             </form>
         </div>
