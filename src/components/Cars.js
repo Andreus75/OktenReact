@@ -14,15 +14,13 @@ export default function Cars ({url}) {
         case 'even':
             return cars.filter(value => value.model.length % 2 === 0).map(value => <div><Car key={value.id}
                                                                                              car={value}/></div>);
-            break;
         case 'odd':
             return cars.filter(value => value.model.length % 2 !== 0).map(value => <div><Car key={value.id}
                                                                                              car={value}/></div>);
-            break
         default :
             <h3>Text</h3>;
     }
-    
+
     return (
         <div>
             {
