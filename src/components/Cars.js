@@ -7,7 +7,7 @@ export default function Cars ({url}) {
     let [cars, setCars] = useState([]);
 
     useEffect(() => {
-        getCars(cars).then(value => setCars(value));
+        getCars(cars).then(value => setCars([...value]));
     },[])
 
     switch (url) {

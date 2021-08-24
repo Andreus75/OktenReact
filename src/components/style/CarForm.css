@@ -1,0 +1,11 @@
+.wrap {
+    display: flex;
+    background: burlywood;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+}
+.wrap a {
+    display: block;
+    background: burlywood;
+}

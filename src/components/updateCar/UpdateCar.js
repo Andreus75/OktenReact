@@ -15,9 +15,10 @@ export default function UpdateCar () {
         console.log(e.target.value);
     };
 
-    function handleChange(e) {
+        let handleChange = (e) => {
         e.preventDefault();
         console.log(e.target.value);
+        console.log(e.currentTarget.value);
     }
 
     return (

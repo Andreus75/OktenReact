@@ -7,17 +7,21 @@ import {
 } from "react-router-dom";
 import Cars from "./Cars";
 import CreateCar from "./createCar/CreateCar";
-export default function CarForm () {
+import UpdateCar from "./updateCar/UpdateCar";
+import "./style/CarForm.css"
+
+export default function CarForm() {
     return (
         <Router>
             <div>
-                <ul>
-                    <li><Link to={'/cars'}>to cars page</Link></li>
-                    <li><Link to={'/even-cars'}>to even cars page</Link></li>
-                    <li><Link to={'/odd-cars'}>to odd cars page</Link></li>
-                    <li><Link to={'/create-car'}>to create car page</Link></li>
-                    <li><Link to={'/update-car'}>to update car page</Link></li>
-                </ul>
+                <div className={'wrap'}>
+
+                        <Link to={'/cars'}>to cars page</Link>
+                        <Link to={'/even-cars'}>to even cars page</Link>
+                        <Link to={'/odd-cars'}>to odd cars page</Link>
+                        <Link to={'/create-car'}>to create car page</Link>
+                        <Link to={'/update-car'}>to update car page</Link>
+                </div>
                 <Switch>
                     <Route path={'/cars'}>
                         <h3>Cars : </h3>
@@ -30,17 +34,15 @@ export default function CarForm () {
                         <h3>Odd Cars : </h3>
                         <Cars url={'odd'}/>
                     </Route>
-                    <Route path={'/create-car'} render={() => {
-                        return <CreateCar/>;
-                    }}>
-                    </Route>
-                    <Route path={'/create-car'} render={() => {
-                        return <CreateCar/>;
-                    }}>
-                    </Route>
                 </Switch>
-
-
+                <Route path={'/create-car'} render={() => {
+                    return <CreateCar/>;
+                }}>
+                </Route>
+                <Route path={'/update-car'} render={() => {
+                    return <UpdateCar/>;
+                }}>
+                </Route>
             </div>
         </Router>
 
