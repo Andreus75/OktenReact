@@ -10,7 +10,6 @@ export default function Cars ({url}) {
         getCars(cars).then(value => setCars(value));
     },[])
 
-
     switch (url) {
         case 'even':
             return cars.filter(value => value.model.length % 2 === 0).map(value => <div><Car key={value.id}
@@ -23,8 +22,7 @@ export default function Cars ({url}) {
         default :
             <h3>Text</h3>;
     }
-
-
+    
     return (
         <div>
             {
@@ -32,21 +30,4 @@ export default function Cars ({url}) {
             }
         </div>
     );
-
-
-
-
-    //
-    // switch (url) {
-    //     case 'even':
-    //         return cars.filter(value => value.model.length % 2 === 0).map(value => <div>
-    //             <h3>{value.id} {value.model}</h3>
-    //         </div>)
-    //     case 'odd':
-    //         return cars.filter(value => value.model.length % 2 !== 0).map(value => <div>
-    //             <h3>{value.id} {value.model}</h3>
-    //         </div>)
-    //     default:
-    //         return <h1>Something text</h1>
-    // }
 }
