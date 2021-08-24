@@ -13,23 +13,22 @@ export default function App() {
   return (
       <Router>
           <div className="App">
-              <Switch>
                   <ul>
                       <li><Link to={'/users'}>users-page</Link></li>
                       <li><Link to={'/posts'}>posts-page</Link></li>
                       <li><Link to={'/comments'}>comments-page</Link></li>
                   </ul>
+              <Switch>
+                  <Route path={'/users'}>
+                      <h3>Users : </h3>
+                      <Users/>
+                  </Route>
+
+                  <Route path={'/posts'} render={() => {
+                      return <Posts/>;
+                  }}/>
+                  <Route path={'/comments'} component={Comments}/>
               </Switch>
-              <Route path={'/users'}>
-                  <h3>Users : </h3>
-                  <Users/>
-              </Route>
-
-              <Route path={'/posts'} render={() => {
-                  return <Posts/>;
-              }}/>
-
-              <Route path={'/comments'} component={Comments}/>
           </div>
       </Router>
 );
