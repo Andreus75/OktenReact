@@ -1,15 +1,16 @@
 import {useEffect, useState} from "react";
-import {carDelete, getCars, saveCar} from "../services/CarService";
+import {carDelete, getCars, saveCar, updateCar} from "../services/CarService";
 import Car from "./Car";
 
 export default function CarsForm () {
 
     let [cars, setCars] = useState([]);
+    let [check, setCheck] = useState(0);
+    let [checkId, setCheckId] = useState(0);
 
     let [model, setModel] = useState('');
-    let [price, setPrice] = useState('');
-    let [year, setYear] = useState('');
-
+    let [price, setPrice] = useState(0);
+    let [year, setYear] = useState(0);
 
     useEffect(() => {
         return getCars()
@@ -22,12 +23,6 @@ export default function CarsForm () {
 
     function onCarYearChange(e) {  setYear(e.target.value); }
 
-    let save = (e) => {
-        e.preventDefault();
-        let car = {model, price, year};
-        saveCar(car);
-    }
-
     let deleteCar = (id) => {
         carDelete(id);
         let filterCarsArray = cars.filter(value => value.id !== id);
@@ -35,9 +30,23 @@ export default function CarsForm () {
     }
 
     let editCar = (car) => {
+        setCheckId(car.id);
+        setCheck(1);
         setModel(car.model);
         setPrice(car.price);
         setYear(car.year);
+    }
+
+    let save = (e) => {
+        e.preventDefault();
+        if (check === 0) {
+            let newCar = {model, price, year};
+            saveCar(newCar);
+        }else if (check === 1) {
+            let info = {model, price, year};
+            updateCar(info, checkId);
+        }
+
     }
     return (
         <div>

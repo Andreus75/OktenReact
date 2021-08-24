@@ -23,10 +23,10 @@ const carDelete = (id) => {
     });
 }
 
-const updateCar = (car) => {
-    fetch(url + '/' + car.id, {
+const updateCar = (info, id) => {
+    fetch(url + '/' + id, {
         method: 'PUT',
-        body: JSON.stringify(car),
+        body: JSON.stringify(info),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },
