@@ -1,0 +1,22 @@
+.user_detail {
+    background: goldenrod;
+    width: 50%;
+
+}
+
+.user_detail h3 {
+    text-align: center;
+}
+
+.psevdonim_email {
+    display: flex;
+}
+.psevdonim_email h4 {
+    width: 50%;
+}
+.phone_website {
+    display: flex;
+}
+.phone_website h4 {
+    width: 50%;
+}
