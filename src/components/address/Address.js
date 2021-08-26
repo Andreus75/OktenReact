@@ -1,18 +1,18 @@
 import Geo from "../geo/Geo";
 
 export default function Address ({address}) {
-    // let {street, suite, city, zipcode} = address;
-    // console.log({address});
-    console.log(address);
+
     return (
         <div>
             Address :
             {address &&  <div>
-                Street : {address.street}
-                Suite : {address.suite}
-                City : {address.city}
-                Zipcode : {address.zipcode}
-                {/*<Geo geo={geo}/>*/}
+                <ul>
+                    <li>Street : {address.street}</li>
+                    <li>Suite : {address.suite}</li>
+                    <li>City : {address.city}</li>
+                    <li>Zipcode : {address.zipcode}</li>
+                    <li><Geo geo={address.geo}/></li>
+                </ul>
             </div>}
         </div>
     );

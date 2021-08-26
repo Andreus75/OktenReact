@@ -18,3 +18,12 @@
 .phone_website h4 {
     width: 50%;
 }
+.address_company {
+    display: flex;
+}
+.address {
+    width: 50%;
+}
+.company {
+    width: 50%;
+}
