@@ -1,9 +1,9 @@
 import Geo from "../geo/Geo";
 
-export default function Address ({address: {street, suite, city, zipcode}}) {
-
+export default function Address ({address}) {
     // let {street, suite, city, zipcode} = address;
-    console.log('address'+ street);
+    // console.log({address});
+    console.log({address});
     return (
         <div>
             Address :

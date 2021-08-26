@@ -5,16 +5,14 @@ import Address from "../address/Address";
 import Company from "../company/Company";
 
 export default function UserDetail (props) {
+    console.log(props);
     let {match:{params:{id}}} = props;
-    console.log(id);
     let [user, setUser] = useState({});
     useEffect(() => {
         getUser(id).then(value => setUser({...value}));
     },[id])
     console.log(user);
-    let {address, company} = [...user];
-    console.log(address);
-    console.log(company);
+    let {address, company} = user;
     // let {geo} = address;
     // console.log(geo);
         // let {location:{state}} = props;
@@ -29,9 +27,8 @@ export default function UserDetail (props) {
                 <h4>Phone : {user.phone}</h4>
                 <h4>Website : {user.website}</h4>
             </div>
-
             <Address address={address}/>
-            {/*<Company company={company}/>*/}
+            <Company company={company}/>
             {/*{state.id}.{state.name}*/}
             {/*<br/>*/}
             {/*<h3>Email : </h3>{state.email}, <h3>Phone : </h3>{state.phone}*/}
