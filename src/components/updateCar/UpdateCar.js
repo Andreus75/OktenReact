@@ -4,6 +4,7 @@ import {getCars} from "../../services/carService";
 export default function UpdateCar() {
 
     let [cars, setCars] = useState([]);
+    let [carEdit, setCarEdit] = useState({});
     let [model, setModel] = useState('');
 
     useEffect(() => {
@@ -21,9 +22,15 @@ export default function UpdateCar() {
         let id = Number(id_t);
         let fCar = cars.filter(value => value.id === id);
         console.log(fCar);
-        console.log(fCar);
+        let {model, price, year} = fCar;
+fCar.map(value => <div>{value.model}</div>)
+        setModel(model);
 
+        console.log(typeof  fCar.model);
+        console.log(price);
+        console.log(year);
     }
+    // console.log(carEdit);
 
     return (
         <div>
