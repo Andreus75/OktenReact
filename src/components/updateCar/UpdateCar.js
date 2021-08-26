@@ -1,9 +1,10 @@
 import {useEffect, useState} from "react";
 import {getCars} from "../../services/carService";
 
-export default function UpdateCar () {
+export default function UpdateCar() {
 
     let [cars, setCars] = useState([]);
+    let [model, setModel] = useState('');
 
     useEffect(() => {
         getCars().then(value => setCars([...value]))
@@ -15,30 +16,33 @@ export default function UpdateCar () {
         console.log(e.target.value);
     };
 
-        let handleChange = (e) => {
-        e.preventDefault();
-        console.log(e.target.value);
-        console.log(e.currentTarget.value);
+    let handleChange = (e) => {
+        const id_t = e.target.value;
+        let id = Number(id_t);
+        let fCar = cars.filter(value => value.id === id);
+        console.log(fCar);
+        console.log(fCar);
+
     }
 
     return (
         <div>
             <div>
-                <form onSubmit={selectCar}>
+                {/*<form onSubmit={selectCar}>*/}
                     <select onChange={handleChange}>
                         {cars.map(value =>
-                            <option name="value" value={value}>
+                            <option name="value" value={value.id}>
                                 {value.id}. {value.model} - {value.price}. {value.year}
-                             </option>
+                            </option>
                         )}
                     </select>
                     <button>ENter</button>
-                </form>
+                {/*</form>*/}
             </div>
 
             <div>
                 <form>
-                    <input type="text" name={'model'}/>
+                    <input type="text" name={'model'} value={model}/>
                     <input type="number" name={'price'}/>
                     <input type="number" name={'year'}/>
                     <button>Edit car</button>
