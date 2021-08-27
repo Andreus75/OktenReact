@@ -1,6 +1,6 @@
 import './App.css';
 import {useReducer} from "react";
-import reducer from "./services/reducer";
+import reducer from "./reducer/reducer";
 
 function App() {
 
