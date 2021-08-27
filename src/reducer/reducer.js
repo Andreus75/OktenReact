@@ -1,10 +1,12 @@
 const reducer = (state, action) => {
-    if (action.obj === 'x' && action.diya === '+') {
-        return {...state, x: state.x+10};
-    }else if (action.obj === 'x' && action.diya === '-') {
-        return {...state, x: state.x-2};
+    switch (action.diya) {
+        case '+':
+            return {...state, x: state.x+10};
+        case '-':
+            return {...state, x: state.x-2};
+        default:
+            return {...state};
     }
-    return {...state};
 }
 
 export default reducer;
