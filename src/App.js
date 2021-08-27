@@ -1,10 +1,16 @@
 import './App.css';
-import Users from "./components/users/Users";
+import {useReducer} from "react";
+import reducer from "./services/reducer";
 
 function App() {
+
+  let [state, dispatch] = useReducer(reducer, {x: 0});
+  let {x} = state;
   return (
-    <div className="App">
-      <Users/>
+    <div>
+      <h1>Counter - {x}</h1>
+        <button onClick={() => dispatch({obj: 'x', diya: '+'})}>increase by 10</button>
+        <button onClick={() => dispatch({obj: 'x', diya: '-'})}>reduce by 2</button>
     </div>
   );
 }
