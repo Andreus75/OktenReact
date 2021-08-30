@@ -1,41 +1,45 @@
 import {useEffect, useState} from "react";
-import {getCars} from "../../services/carService";
+import {getCars, updateCar} from "../../services/carService";
 
 export default function UpdateCar() {
 
     let [cars, setCars] = useState([]);
-    let [carEdit, setCarEdit] = useState({});
+    let [checkId, setCheckId] = useState('');
     let [model, setModel] = useState('');
+    let [price, setPrice] = useState('');
+    let [year, setYear] = useState('');
 
     useEffect(() => {
         getCars().then(value => setCars([...value]))
     }, [])
 
-    const selectCar = (e, value) => {
-        e.preventDefault();
-        console.log(value);
-        console.log(e.target.value);
-    };
-
     let handleChange = (e) => {
         const id_t = e.target.value;
         let id = Number(id_t);
-        let fCar = cars.filter(value => value.id === id);
-        console.log(fCar);
+        let fCar = cars.find(value => value.id === id);
         let {model, price, year} = fCar;
-fCar.map(value => <div>{value.model}</div>)
+        setCheckId(fCar.id);
         setModel(model);
-
-        console.log(typeof  fCar.model);
-        console.log(price);
-        console.log(year);
+        setPrice(price);
+        setYear(year);
     }
-    // console.log(carEdit);
+    const updateCarModel = (e) => {
+        setModel(e.target.value);
+    }
+    const updateCarPrice = (e) => {
+      setPrice(e.target.value);
+    }
+    const updateCarYear = (e) => {
+      setYear(e.target.value);
+    }
 
+    const update_Car = () => {
+      let carInfo = {model, price, year};
+      updateCar(carInfo, checkId);
+    }
     return (
         <div>
             <div>
-                {/*<form onSubmit={selectCar}>*/}
                     <select onChange={handleChange}>
                         {cars.map(value =>
                             <option name="value" value={value.id}>
@@ -43,15 +47,13 @@ fCar.map(value => <div>{value.model}</div>)
                             </option>
                         )}
                     </select>
-                    <button>ENter</button>
-                {/*</form>*/}
             </div>
 
             <div>
-                <form>
-                    <input type="text" name={'model'} value={model}/>
-                    <input type="number" name={'price'}/>
-                    <input type="number" name={'year'}/>
+                <form onSubmit={update_Car}>
+                    <input type="text" name={'model'} value={model} onInput={updateCarModel}/>
+                    <input type="number" name={'price'} value={price} onInput={updateCarPrice}/>
+                    <input type="number" name={'year'} value={year} onInput={updateCarYear}/>
                     <button>Edit car</button>
                 </form>
 
