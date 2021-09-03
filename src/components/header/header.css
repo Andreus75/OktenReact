@@ -1,0 +1,14 @@
+.header {
+    background: #9a4ee1;
+    height: 100px;
+    display: flex;
+}
+.logo {
+    background: white;
+    width: 100px;
+    height: 100px;
+
+}
+.header_content {
+    text-align: center;
+}

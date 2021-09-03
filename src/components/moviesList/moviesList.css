@@ -1,0 +1,8 @@
+.movies_poster {
+    box-sizing:border-box;
+    max-width: 100%;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+}

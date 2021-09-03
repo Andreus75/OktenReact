@@ -1,1 +1,9 @@
-
+.header_poster_main {
+    background: silver;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.movies_list {
+    padding: 20px;
+}
