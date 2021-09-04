@@ -2,6 +2,14 @@ import "./header.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {discoverGenre, discoverMovie, getTopMovies} from "../../services/movieService";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    withRouter
+} from "react-router-dom";
+import MovieInfo from "../movieInfo/movieInfo";
 
 export default function Header () {
 
@@ -27,27 +35,32 @@ export default function Header () {
     //     })
     }
 
+    const getTopMoviesClick = () => {
+
+    }
+
     // console.log(results);
     return (
-        <div className={'header'}>
-            <div className={'logo'}>logo</div>
-            <div className={'header_content'}>
-                <select className={'select_genres'} onChange={choseGenre}>
-                    {genres &&
+            <div className={'header'}>
+                <div className={'logo'}>logo</div>
+                <div className={'header_content'}>
+                    <select className={'select_genres'} onChange={choseGenre}>
+                        {genres &&
                         genres.map(value =>
-                        <option name="value" value={value.id}>
-                            {value.name}
-                        </option>
+                            <option name="value" value={value.id}>
+                                {value.name}
+                            </option>
                         )
-                    }
-                </select>
-                <button onClick={getAllMoviesClick}>All movies</button>
-                {/*<button onClick={getTopMoviesClick}>Top movies</button>*/}
+                        }
+                    </select>
+                    <button className={'button_all_movies'} onClick={getAllMoviesClick}>All movies</button>
+                    <button className={'button_top_movies'} onClick={getTopMoviesClick}>Top movies</button>
 
-                <input type="search" placeholder={'search the movie'}/>
-                <button className={'search_button'}>search</button>
+                        <input type="search" placeholder={'search the movie'}/>
+                        <button className={'search_button'}>search</button>
+
+                </div>
+
             </div>
-
-        </div>
     );
 }

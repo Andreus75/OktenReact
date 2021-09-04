@@ -12,3 +12,14 @@
 .header_content {
     text-align: center;
 }
+.select_genres {
+    margin: 30px;
+}
+.button_all_movies {
+    margin: 30px;
+    border-radius: 5px;
+}
+.button_top_movies {
+    margin: 30px;
+    border-radius: 5px;
+}

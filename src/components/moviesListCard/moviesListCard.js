@@ -6,7 +6,7 @@ import {
     Link,
     withRouter
 } from "react-router-dom";
-import MovieInfo from "../movieInfo/movieInfo";
+import PosterPreview from "../posterPreview/posterPreview";
 
 export default function MoviesListCard ({movie}) {
 
@@ -17,13 +17,9 @@ export default function MoviesListCard ({movie}) {
     }
 
     return (
-        <Router>
             <div className={'img_movie'}>
-                <Link to={'/movie-info'}><img src= {'https://image.tmdb.org/t/p/w200'+poster_path}/></Link>
-                    {/*<Link to={'/movie-info'}>info</Link>*/}
-                <Route path={'/movie-info'} component={MovieInfo}/>
+                <Link to={{pathname:`/info/${movie.id}`, state: movie}}><PosterPreview movie={movie}/></Link>
             </div>
-        </Router>
 
     );
 }
