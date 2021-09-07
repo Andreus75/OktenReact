@@ -1,6 +1,5 @@
 import './App.css';
 import Header from "./components/header/header";
-import PosterPreview from "./components/posterPreview/posterPreview";
 import MoviesList from "./components/moviesList/moviesList";
 import {
     BrowserRouter as Router,
@@ -22,7 +21,9 @@ function App() {
                           <Header/>
                       </div>
                       <div className={'poster_previews'}>
-                          <Route path={'/info/:id'} component={MovieInfo}/>
+                          <Route path={'/info/:id'} render={(props) => {
+                              return <MovieInfo {...props}/>
+                          }}/>
                       </div>
                       <div className={'movies_list'}>
                           <MoviesList/>

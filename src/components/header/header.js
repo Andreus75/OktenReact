@@ -2,7 +2,8 @@ import "./header.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {discoverGenre, discoverMovie, getTopMovies} from "../../services/movieService";
-import {findAllByDisplayValue} from "@testing-library/react";
+import {ALL_MOVIES, FILTER_TO_GENRE, TOP_MOVIES} from "../../redux/actions/actionsType";
+import logoFilm from "../../img/logoFilm.png";
 
 export default function Header () {
 
@@ -24,25 +25,26 @@ export default function Header () {
         let moviesFilter = results.filter(value => value.genre_ids.some(value1 => value1 === id)
 
         );
-        dispatch({type: 'FILTER_TO_GENRE', payload: moviesFilter});
+        dispatch({type: FILTER_TO_GENRE, payload: moviesFilter});
     }
 
     const getAllMoviesClick = () => {
         discoverMovie().then(value => {
-            dispatch({type: 'ALL_MOVIES', payload: value.data.results});
+            console.log(value.data);
+            dispatch({type: ALL_MOVIES, payload: value.data.results});
         })
     }
 
     const getTopMoviesClick = () => {
         getTopMovies().then(value => {
-            dispatch({type: 'TOP_MOVIES', payload: value.data.results})
+            dispatch({type: TOP_MOVIES, payload: value.data.results})
         })
 
     }
 
     return (
             <div className={'header'}>
-                <div className={'logo'}><img src={'./img/pngwing.com.png'}/></div>
+                <div className={'logo'}><img src={logoFilm} alt="LOGO"/></div>
                 <div className={'header_content'}>
                     <select className={'select_genres'} onChange={choseGenre}>
                         {genres &&
