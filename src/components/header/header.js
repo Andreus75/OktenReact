@@ -13,7 +13,8 @@ export default function Header () {
      let [genres, setGenres] = useState();
 
     useEffect(() => {
-        discoverGenre().then(value => setGenres(value.data.genres)
+        discoverGenre().then(value => {
+            setGenres(value.data.genres);}
         );
     },[])
 
@@ -30,7 +31,6 @@ export default function Header () {
 
     const getAllMoviesClick = () => {
         discoverMovie().then(value => {
-            console.log(value.data);
             dispatch({type: ALL_MOVIES, payload: value.data.results});
         })
     }

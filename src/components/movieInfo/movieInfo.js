@@ -13,27 +13,26 @@ export default function MovieInfo (props) {
     },[id])
 
     let {data} = state;
-
     return (
         <div className={'movie_info'}>
             <div>
-                original language - {data.original_language}
+                original language - {data && data.original_language}
                 <br/>
-                original title - {data.original_title}
+                original title - {data && data.original_title}
                 <br/>
-                popularity - {data.popularity}
+                popularity - {data && data.popularity}
                 <br/>
-                release date : {data.release_date}
+                release date : {data && data.release_date}
                 <br/>
-                vote average - {data.vote_average}
+                vote average - {data && data.vote_average}
                 <br/>
-                vote_count : {data.vote_count}
+                vote_count : {data && data.vote_count}
                 <hr/>
                 <br/>
-                overview : {data.overview}
+                overview : {data && data.overview}
             </div>
             <div className={'poster_movie_info'}>
-                <img src= {'https://image.tmdb.org/t/p/w400'+data.backdrop_path}/>
+                <img src= {data && 'https://image.tmdb.org/t/p/w400'+data.backdrop_path}/>
             </div>
         </div>
     );
