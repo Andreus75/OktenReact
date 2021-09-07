@@ -1,5 +1,6 @@
 import './movieInfo.css'
 
+
 export default function MovieInfo (props) {
 
     let {location:{state}} = props;
@@ -17,12 +18,13 @@ export default function MovieInfo (props) {
                 <br/>
                 vote average - {state.vote_average}
                 <br/>
-                overview : {state.overview}
-                <br/>
                 vote_count : {state.vote_count}
+                <hr/>
+                <br/>
+                overview : {state.overview}
             </div>
             <div className={'poster_movie_info'}>
-                <img src= {'https://image.tmdb.org/t/p/w200'+state.poster_path}/>
+                <img src= {'https://image.tmdb.org/t/p/w400'+state.backdrop_path}/>
             </div>
         </div>
     );

@@ -8,6 +8,8 @@ let moviesReducer = (state = {results: []}, action) => {
             return {...state, results: action.payload};
         case "TOP_MOVIES" :
             return {...state, results: action.payload};
+        case "FILTER_TO_GENRE" :
+            return {...state, results: action.payload};
         default :
             return state;
     }

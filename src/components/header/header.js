@@ -2,14 +2,7 @@ import "./header.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {discoverGenre, discoverMovie, getTopMovies} from "../../services/movieService";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    withRouter
-} from "react-router-dom";
-import MovieInfo from "../movieInfo/movieInfo";
+import {findAllByDisplayValue} from "@testing-library/react";
 
 export default function Header () {
 
@@ -23,32 +16,39 @@ export default function Header () {
         );
     },[])
 
+
     let choseGenre = (e) => {
         const id_t = e.target.value;
         let id = Number(id_t);
-        // console.log(id);
+
+        let moviesFilter = results.filter(value => value.genre_ids.some(value1 => value1 === id)
+
+        );
+        dispatch({type: 'FILTER_TO_GENRE', payload: moviesFilter});
     }
 
     const getAllMoviesClick = () => {
-    //     discoverMovie().then(value => {
-    //         dispatch({type: 'ALL_MOVIES', payload: value.data.results});
-    //     })
+        discoverMovie().then(value => {
+            dispatch({type: 'ALL_MOVIES', payload: value.data.results});
+        })
     }
 
     const getTopMoviesClick = () => {
+        getTopMovies().then(value => {
+            dispatch({type: 'TOP_MOVIES', payload: value.data.results})
+        })
 
     }
 
-    // console.log(results);
     return (
             <div className={'header'}>
-                <div className={'logo'}>logo</div>
+                <div className={'logo'}><img src={'./img/pngwing.com.png'}/></div>
                 <div className={'header_content'}>
                     <select className={'select_genres'} onChange={choseGenre}>
                         {genres &&
                         genres.map(value =>
                             <option name="value" value={value.id}>
-                                {value.name}
+                                {value.id}.{value.name}
                             </option>
                         )
                         }

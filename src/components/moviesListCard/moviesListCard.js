@@ -10,11 +10,11 @@ import PosterPreview from "../posterPreview/posterPreview";
 
 export default function MoviesListCard ({movie}) {
 
-    let {poster_path, id} = movie;
-    const moInformation = (e) => {
-        e.preventDefault();
-        console.log({id});
-    }
+    // let {poster_path, id} = movie;
+    // const moInformation = (e) => {
+    //     e.preventDefault();
+    //     console.log({id});
+    // }
 
     return (
             <div className={'img_movie'}>
