@@ -24,6 +24,8 @@ let moviesReducer = (state = {results: []}, action) => {
             return {...state, results: action.payload};
         case PREVIOUS_PAGE :
             return {...state, results: action.payload};
+        case "SEARCH_MOVIE" :
+            return {...state, results: action.payload};
         default :
             return state;
     }

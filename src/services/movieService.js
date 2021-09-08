@@ -15,7 +15,7 @@ const getDetailsMovie = async (id) => await instance.get('/movie/' + id);
 const getTopMovies = async () => await instance.get('/movie/top_rated');
 const getLatestMovie = async () => await instance.get('/movie/upcoming');
 const getImagesMovie = async (movie_id) => await instance.get('/movie/' + movie_id + '/images');
+const getKeywordsMovie = async (movie_id) => await instance('/movie/' + movie_id + '/keywords')
 
 
-
-export {discoverMovie, discoverGenre, getDetailsMovie, getPopularMovie, getTopMovies, getLatestMovie, getImagesMovie, discoverMoviePage};
+export {discoverMovie, discoverGenre, getDetailsMovie, getPopularMovie, getTopMovies, getLatestMovie, getImagesMovie, discoverMoviePage, getKeywordsMovie};

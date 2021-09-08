@@ -1,7 +1,7 @@
 import "./header.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {discoverGenre, discoverMovie, getTopMovies} from "../../services/movieService";
+import {discoverGenre, discoverMovie, getKeywordsMovie, getTopMovies} from "../../services/movieService";
 import {ALL_MOVIES, FILTER_TO_GENRE, TOP_MOVIES} from "../../redux/actions/actionsType";
 import logoFilm from "../../img/logoFilm.png";
 
@@ -29,17 +29,39 @@ export default function Header () {
         dispatch({type: FILTER_TO_GENRE, payload: moviesFilter});
     }
 
-    const getAllMoviesClick = () => {
+    const getAllMoviesClick = (e) => {
+        e.preventDefault();
         discoverMovie().then(value => {
             dispatch({type: ALL_MOVIES, payload: value.data.results});
         })
     }
 
-    const getTopMoviesClick = () => {
+    const getTopMoviesClick = (e) => {
+        e.preventDefault();
         getTopMovies().then(value => {
             dispatch({type: TOP_MOVIES, payload: value.data.results})
         })
 
+    }
+
+    useEffect(() => {
+        getKeywordsMovie(588228).then(value => console.log(value.data.keywords));
+    })
+
+    let [keyWorld, setKeyWorld] = useState('enter keyWorld');
+
+    let searchMovie = (e) => {
+        e.preventDefault();
+        console.log("searchForm");
+
+        console.log(results);
+        for (let i = 0; i < results.length; i++) {
+            if ((results[i].overview).includes(e.target.keyWorlds.value)) {
+                console.log(results[i]);
+                // dispatch({type: 'SEARCH_MOVIE', payload: results[i]});
+            }
+
+        }
     }
 
     return (
@@ -57,12 +79,12 @@ export default function Header () {
                     </select>
                     <button className={'button_all_movies'} onClick={getAllMoviesClick}>All movies</button>
                     <button className={'button_top_movies'} onClick={getTopMoviesClick}>Top movies</button>
-
-                        <input type="search" placeholder={'search the movie'}/>
-                        <button className={'search_button'}>search</button>
-
                 </div>
 
+                <form className={'searchForm'} onSubmit={searchMovie}>
+                    <input type="text" name={'keyWorlds'} placeholder={keyWorld}/>
+                    <button className={'search_button'}>search</button>
+                </form>
             </div>
     );
 }
