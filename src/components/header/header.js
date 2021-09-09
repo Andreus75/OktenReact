@@ -9,7 +9,7 @@ import {
     getTopMovies
 } from "../../services/movieService";
 import {ALL_MOVIES, FILTER_TO_GENRE, SEARCH_MOVIE, TOP_MOVIES} from "../../redux/actions/actionsType";
-import logoFilm from "../../img/logoFilm.png";
+// import logoFilm from "../../../public/images/logoFilm.png";
 
 export default function Header () {
 
@@ -24,6 +24,7 @@ export default function Header () {
         );
     },[])
 
+    //   search movies certain genre on one page
 
     let choseGenre = (e) => {
         const id_t = e.target.value;
@@ -33,12 +34,16 @@ export default function Header () {
         dispatch({type: FILTER_TO_GENRE, payload: moviesFilter});
     }
 
+    //   search all movies
+
     const getAllMoviesClick = (e) => {
         e.preventDefault();
         discoverMovie().then(value => {
             dispatch({type: ALL_MOVIES, payload: value.data.results});
         })
     }
+
+    //  search for top movies
 
     const getTopMoviesClick = (e) => {
         e.preventDefault();
@@ -48,7 +53,9 @@ export default function Header () {
     }
 
     let [keyWorld] = useState('enter keyWorld');
-    
+
+    //  search for movies by keywords
+
     let searchMovie = (e) => {
         e.preventDefault();
 
@@ -76,7 +83,7 @@ export default function Header () {
 
     return (
             <div className={'header'}>
-                <div className={'logo'}><img src={logoFilm} alt="LOGO"/></div>
+                <div className={'logo'}><img src="/images/logoFilm.png" alt="LOGO"/></div>
                 <div className={'header_content'}>
                     <select className={'select_genres'} onChange={choseGenre}>
                         {genres &&

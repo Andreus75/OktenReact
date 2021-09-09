@@ -14,6 +14,10 @@
 .logo img {
     position: relative;
 }
+.header img {
+    width: 100px;
+    height: 100px;
+}
 .header_content {
     filter: inset(100%);
     text-align: center;

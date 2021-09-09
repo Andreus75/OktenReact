@@ -17,6 +17,8 @@ export default function MoviesList () {
         })
     },[])
 
+    //   page traffic
+
     useEffect(() => {
         if (page < 1){
             setPage(500);

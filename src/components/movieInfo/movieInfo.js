@@ -2,6 +2,7 @@ import './movieInfo.css'
 import {useEffect, useState} from "react";
 import {getDetailsMovie} from "../../services/movieService";
 
+//    output information about the movie
 
 export default function MovieInfo (props) {
 
