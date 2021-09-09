@@ -1,4 +1,5 @@
 .header {
+    /*filter: inset(100%);*/
     background: #9a4ee1;
     height: 100px;
     display: flex;
@@ -14,12 +15,14 @@
     position: relative;
 }
 .header_content {
+    filter: inset(100%);
     text-align: center;
 }
 .select_genres {
     margin: 30px;
 }
 .button_all_movies {
+    filter: inset(100%);
     margin: 30px;
     border-radius: 5px;
 }

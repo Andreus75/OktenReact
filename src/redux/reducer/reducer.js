@@ -4,7 +4,7 @@ import {
     GET_GENRE,
     GET_INFO,
     NEX_PAGE,
-    PREVIOUS_PAGE,
+    PREVIOUS_PAGE, SEARCH_MOVIE,
     TOP_MOVIES
 } from "../actions/actionsType";
 
@@ -24,16 +24,10 @@ let moviesReducer = (state = {results: []}, action) => {
             return {...state, results: action.payload};
         case PREVIOUS_PAGE :
             return {...state, results: action.payload};
-        case "SEARCH_MOVIE" :
+        case SEARCH_MOVIE :
             return {...state, results: action.payload};
         default :
             return state;
-    }
-}
-
-let genresReducer = (state = {genres: []}, action) => {
-    switch (action.type) {
-
     }
 }
 

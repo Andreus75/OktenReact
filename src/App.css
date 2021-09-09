@@ -7,3 +7,7 @@
 .movies_list {
     padding: 20px;
 }
+.buttonChangeTheme {
+    background: silver;
+    width: 100%;
+}

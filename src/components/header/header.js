@@ -1,8 +1,14 @@
 import "./header.css"
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
-import {discoverGenre, discoverMovie, getKeywordsMovie, getTopMovies} from "../../services/movieService";
-import {ALL_MOVIES, FILTER_TO_GENRE, TOP_MOVIES} from "../../redux/actions/actionsType";
+import {
+    discoverGenre,
+    discoverMovie,
+    discoverMoviePage,
+    getKeywordsMovie,
+    getTopMovies
+} from "../../services/movieService";
+import {ALL_MOVIES, FILTER_TO_GENRE, SEARCH_MOVIE, TOP_MOVIES} from "../../redux/actions/actionsType";
 import logoFilm from "../../img/logoFilm.png";
 
 export default function Header () {
@@ -23,9 +29,7 @@ export default function Header () {
         const id_t = e.target.value;
         let id = Number(id_t);
 
-        let moviesFilter = results.filter(value => value.genre_ids.some(value1 => value1 === id)
-
-        );
+        let moviesFilter = results.filter(value => value.genre_ids.some(value1 => value1 === id));
         dispatch({type: FILTER_TO_GENRE, payload: moviesFilter});
     }
 
@@ -41,27 +45,35 @@ export default function Header () {
         getTopMovies().then(value => {
             dispatch({type: TOP_MOVIES, payload: value.data.results})
         })
-
     }
 
-    useEffect(() => {
-        getKeywordsMovie(588228).then(value => console.log(value.data.keywords));
-    })
+    let [keyWorld] = useState('enter keyWorld');
 
-    let [keyWorld, setKeyWorld] = useState('enter keyWorld');
 
+    let [filterResults] = useState([]);
     let searchMovie = (e) => {
         e.preventDefault();
-        console.log("searchForm");
 
-        console.log(results);
-        for (let i = 0; i < results.length; i++) {
-            if ((results[i].overview).includes(e.target.keyWorlds.value)) {
-                console.log(results[i]);
-                // dispatch({type: 'SEARCH_MOVIE', payload: results[i]});
-            }
 
+        for (let i = 1; i <= 500; i++) {
+            discoverMoviePage(i).then(value => {
+                    for (let resultsAllElement of value.data.results) {
+                        if ((resultsAllElement.overview).includes(e.target.keyWorlds.value) || (resultsAllElement.original_title).includes(e.target.keyWorlds.value)) {
+                            filterResults.push(resultsAllElement);
+                        }
+                    }
+                }
+            )
         }
+
+        // for (let result of results) {
+        //     if ((result.overview).includes(e.target.keyWorlds.value) || (result.original_title).includes(e.target.keyWorlds.value)) {
+        //                 filterResults.push(result);
+        //             }
+        // }
+
+        dispatch({type: SEARCH_MOVIE, payload: filterResults});
+        console.log(typeof filterResults);
     }
 
     return (
