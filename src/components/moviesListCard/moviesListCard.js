@@ -9,7 +9,7 @@ import {
 import PosterPreview from "../posterPreview/posterPreview";
 
 export default function MoviesListCard ({movie}) {
-console.log("MoviesListCard");
+
     return (
             <div className={'img_movie'}>
                 <Link to={{pathname:`/info/${movie.id}`, state: movie}}><PosterPreview movie={movie}/></Link>

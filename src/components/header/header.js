@@ -48,20 +48,20 @@ export default function Header () {
     }
 
     let [keyWorld] = useState('enter keyWorld');
-
-
-    let [filterResults] = useState([]);
+    
     let searchMovie = (e) => {
         e.preventDefault();
 
-
+        let filterResult = [];
         for (let i = 1; i <= 500; i++) {
             discoverMoviePage(i).then(value => {
                     for (let resultsAllElement of value.data.results) {
                         if ((resultsAllElement.overview).includes(e.target.keyWorlds.value) || (resultsAllElement.original_title).includes(e.target.keyWorlds.value)) {
-                            filterResults.push(resultsAllElement);
+                            // filterResults.push(resultsAllElement);
+                            filterResult.push(resultsAllElement);
                         }
                     }
+                dispatch({type: SEARCH_MOVIE, payload: filterResult});
                 }
             )
         }
@@ -71,9 +71,7 @@ export default function Header () {
         //                 filterResults.push(result);
         //             }
         // }
-
-        dispatch({type: SEARCH_MOVIE, payload: filterResults});
-        console.log(typeof filterResults);
+        // dispatch({type: SEARCH_MOVIE, payload: filterResult});
     }
 
     return (
